@@ -1,0 +1,40 @@
+/* ══════════════════════════════════════════════════
+   ALBUM GRID — Estilo álbum Panini retro
+   El grid DEBE caber completamente en el viewport
+   ══════════════════════════════════════════════════ */
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+  padding: 10px;
+  width: 100%;
+  max-width: min(75vh, 720px); /* Escala con la altura del viewport */
+  background: var(--album-surface);
+  border: 3px solid var(--album-border);
+  border-radius: 10px;
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.3),
+    0 4px 20px rgba(0, 0, 0, 0.4);
+  /* Marco doble retro */
+  outline: 2px solid rgba(255, 215, 0, 0.1);
+  outline-offset: 4px;
+}
+
+/* En pantallas pequeñas, ajustar al ancho */
+@media (max-width: 767px) {
+  .album-grid {
+    max-width: 100%;
+    gap: 3px;
+    padding: 6px;
+  }
+}
+
+/* Pantalla grande */
+@media (min-width: 1400px) {
+  .album-grid {
+    max-width: min(70vh, 900px);
+    gap: 6px;
+    padding: 14px;
+  }
+}

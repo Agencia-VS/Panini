@@ -1,0 +1,82 @@
+/* ══════════════════════════════════════════════════
+   GAME CONTROLS — Host panel (glassmorphism sleeve)
+   ══════════════════════════════════════════════════ */
+
+.game-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.75rem;
+  background: rgba(255, 244, 244, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 0.375rem;
+  width: 200px;
+  box-shadow: 0 8px 32px rgba(77, 33, 39, 0.12);
+}
+
+.game-controls__title {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tertiary);
+  margin-bottom: 0.15rem;
+}
+
+.game-controls__btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.6rem;
+  background: var(--surface-container);
+  border: none;
+  border-radius: 0.375rem;
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.game-controls__btn:hover:not(:disabled) {
+  background: var(--surface-container-high);
+}
+
+.game-controls__btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.game-controls__btn--danger {
+  color: var(--primary);
+}
+
+.game-controls__btn--danger:hover:not(:disabled) {
+  background: rgba(187, 0, 12, 0.08);
+}
+
+.game-controls__info {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+  line-height: 1.4;
+}
+
+.game-controls__pattern-select,
+.game-controls__select {
+  padding: 0.3rem;
+  background: var(--surface-container);
+  border: none;
+  border-radius: 0.375rem;
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.game-controls__pattern-select option,
+.game-controls__select option {
+  background: var(--surface);
+}

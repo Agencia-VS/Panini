@@ -1,0 +1,126 @@
+/* ══════════════════════════════════════════════════
+   REVEAL MODAL — Sticker pack opening
+   ══════════════════════════════════════════════════ */
+
+.reveal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(77, 33, 39, 0.6);
+  z-index: 500;
+  backdrop-filter: blur(8px);
+}
+
+.reveal-card {
+  position: relative;
+  width: min(320px, 85vw);
+  padding: 2rem;
+  background: var(--surface-bright);
+  border-radius: 0.75rem;
+  text-align: center;
+  box-shadow:
+    0 24px 80px rgba(77, 33, 39, 0.2),
+    0 4px 16px rgba(77, 33, 39, 0.08);
+  overflow: hidden;
+}
+
+/* Holographic shimmer */
+.reveal-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 215, 9, 0.06) 45%,
+    rgba(255, 215, 9, 0.12) 50%,
+    rgba(255, 215, 9, 0.06) 55%,
+    transparent 65%
+  );
+  background-size: 300% 100%;
+  animation: revealShimmer 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes revealShimmer {
+  0% { background-position: 300% 0; }
+  100% { background-position: -300% 0; }
+}
+
+.reveal-card__group {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--tertiary);
+  margin-bottom: 0.5rem;
+}
+
+.reveal-card__img {
+  width: 160px;
+  height: 120px;
+  object-fit: contain;
+  margin: 1rem auto;
+  filter: drop-shadow(0 4px 12px rgba(77, 33, 39, 0.2));
+}
+
+.reveal-card__name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--on-surface);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+}
+
+.reveal-card__number {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.reveal-card__close {
+  margin-top: 1.5rem;
+  padding: 0.4rem 1.5rem;
+  background: var(--primary);
+  border: none;
+  border-radius: 0.375rem;
+  color: var(--on-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  position: relative;
+  z-index: 2;
+}
+
+.reveal-card__close:hover {
+  background: var(--primary-light);
+  transform: scale(1.04);
+}
+
+/* ── Special flag glow ── */
+.reveal-card--special {
+  box-shadow:
+    0 24px 80px rgba(77, 33, 39, 0.2),
+    0 0 60px rgba(255, 215, 9, 0.15);
+}
+
+@media (min-width: 1400px) {
+  .reveal-card {
+    width: 400px;
+    padding: 2.5rem;
+  }
+
+  .reveal-card__img {
+    width: 200px;
+    height: 150px;
+  }
+
+  .reveal-card__name {
+    font-size: 2.2rem;
+  }
+}

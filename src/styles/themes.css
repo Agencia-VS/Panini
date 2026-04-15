@@ -1,0 +1,99 @@
+/* ══════════════════════════════════════════════════
+   PANINI BINGO MUNDIALERO — The Analog Collector
+   Design System: "The Tactile Archive"
+   ══════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ── Primary: Panini Red ── */
+  --primary: #bb000c;
+  --primary-light: #e8333d;
+  --on-primary: #ffffff;
+
+  /* ── Secondary: Deep Orange / vintage ── */
+  --secondary: #8c4a00;
+  --secondary-container: #ffb366;
+  --on-secondary: #ffffff;
+
+  /* ── Tertiary: Vibrant Yellow / gold ── */
+  --tertiary: #6c5a00;
+  --tertiary-container: #ffd709;
+
+  /* ── Surface Hierarchy (warm album pages) ── */
+  --surface: #fff4f4;
+  --surface-dim: #f0e6e7;
+  --surface-bright: #ffffff;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #ffeced;
+  --surface-container: #ffe0e2;
+  --surface-container-high: #ffd9dc;
+  --surface-container-highest: #ffd0d4;
+
+  /* ── Text on surfaces ── */
+  --on-surface: #4d2127;
+  --on-surface-variant: #6d4249;
+  --text-muted: #99757b;
+  --outline-variant: rgba(77, 33, 39, 0.15);
+
+  /* ── Semantic mappings (consumed by components) ── */
+  --bg-primary: var(--surface);
+  --bg-surface: var(--surface-container-low);
+  --bg-surface-alt: var(--surface-container);
+  --accent-gold: var(--tertiary-container);
+  --accent-orange: var(--secondary-container);
+  --accent-red: var(--primary);
+  --text-primary: var(--on-surface);
+  --text-secondary: var(--on-surface-variant);
+
+  --sticker-bg: var(--surface-container-high);
+  --sticker-border: var(--outline-variant);
+  --sticker-border-unlocked: var(--primary);
+  --sticker-locked-bg: var(--surface-container-low);
+  --album-border: var(--primary);
+  --album-surface: var(--surface-container);
+
+  /* ── Fonts ── */
+  --font-display: 'Epilogue', system-ui, sans-serif;
+  --font-body: 'Be Vietnam Pro', system-ui, sans-serif;
+}
+
+[data-theme='estadio'] {
+  --primary: #1b5e20;
+  --primary-light: #388e3c;
+  --on-primary: #ffffff;
+  --secondary: #33691e;
+  --secondary-container: #aed581;
+  --tertiary: #4e6d00;
+  --tertiary-container: #c6e84a;
+  --surface: #f5faf5;
+  --surface-dim: #e6f0e6;
+  --surface-container-low: #ecf5ec;
+  --surface-container: #dceadc;
+  --surface-container-high: #d0e0d0;
+  --surface-container-highest: #c4d6c4;
+  --on-surface: #1b3a1b;
+  --on-surface-variant: #3d5a3d;
+  --text-muted: #6d8a6d;
+  --outline-variant: rgba(27, 58, 27, 0.15);
+}
+
+[data-theme='neon'] {
+  --primary: #7b1fa2;
+  --primary-light: #ab47bc;
+  --on-primary: #ffffff;
+  --secondary: #00695c;
+  --secondary-container: #4dd0e1;
+  --tertiary: #e65100;
+  --tertiary-container: #ff9800;
+  --surface: #faf5fc;
+  --surface-dim: #efe6f2;
+  --surface-container-low: #f3ecf6;
+  --surface-container: #e8dced;
+  --surface-container-high: #ddd0e3;
+  --surface-container-highest: #d2c4d9;
+  --on-surface: #3a1a4a;
+  --on-surface-variant: #5a3a6a;
+  --text-muted: #8a6a9a;
+  --outline-variant: rgba(58, 26, 74, 0.15);
+}
