@@ -1,7 +1,7 @@
 import { useRef, useCallback, useEffect } from 'react';
 import { Howl, Howler } from 'howler';
 
-const AUDIO_VERSION = '2026-04-17-1';
+const AUDIO_VERSION = '2026-04-17-2';
 const audioPath = (fileName: string) => `${import.meta.env.BASE_URL}audio/${fileName}?v=${AUDIO_VERSION}`;
 
 /**
@@ -9,7 +9,7 @@ const audioPath = (fileName: string) => `${import.meta.env.BASE_URL}audio/${file
  * Cada sonido se instancia como Howl independiente para control granular.
  */
 const SOUNDS = {
-  bgm: { src: audioPath('background-ambient.mp3'), loop: true, volume: 0.18 },
+  bgm: { src: audioPath('background-ambient.mp3'), loop: true, volume: 0.24 },
   spin: { src: audioPath('spin-loop.mp3'), loop: true, volume: 0.6 },
   reveal: { src: audioPath('reveal-hit.mp3'), volume: 0.8 },
   sticker: { src: audioPath('sticker-slap.mp3'), volume: 0.5 },

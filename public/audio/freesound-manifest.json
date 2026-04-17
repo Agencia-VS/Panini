@@ -1,28 +1,28 @@
 {
-  "generatedAt": "2026-04-17T15:42:11.899Z",
+  "generatedAt": "2026-04-17T15:52:27.594Z",
   "dryRun": false,
   "source": "freesound.org",
   "licenseFilter": "Creative Commons 0",
   "items": [
     {
       "fileName": "background-ambient.mp3",
-      "query": "calm ambient music loop",
-      "score": 150,
+      "query": "upbeat game music loop",
+      "score": 202,
       "triedQueries": [
-        "soft ambient background loop",
-        "calm ambient music loop",
-        "game background ambient",
-        "gentle pad loop"
+        "upbeat game music loop",
+        "arcade background music loop",
+        "casino style music loop",
+        "energetic background beat loop"
       ],
       "status": "downloaded",
       "source": {
-        "id": 826622,
-        "name": "Memories of a sweet summer (music) (loop)",
-        "username": "xkeril",
+        "id": 841299,
+        "name": "Upbeat Game Loop - Aurora Ride",
+        "username": "Venus17",
         "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "soundPage": "https://freesound.org/people/xkeril/sounds/826622/",
-        "previewUrl": "https://cdn.freesound.org/previews/826/826622_13504080-hq.mp3",
-        "duration": 20
+        "soundPage": "https://freesound.org/people/Venus17/sounds/841299/",
+        "previewUrl": "https://cdn.freesound.org/previews/841/841299_18297633-hq.mp3",
+        "duration": 31.2195
       }
     },
     {

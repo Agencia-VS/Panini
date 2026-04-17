@@ -19,12 +19,12 @@ const SOUND_TARGETS = [
   {
     fileName: 'background-ambient.mp3',
     queries: [
-      'soft ambient background loop',
-      'calm ambient music loop',
-      'game background ambient',
-      'gentle pad loop',
+      'upbeat game music loop',
+      'arcade background music loop',
+      'casino style music loop',
+      'energetic background beat loop',
     ],
-    minDuration: 8,
+    minDuration: 6,
     maxDuration: 120,
   },
   {
@@ -133,7 +133,10 @@ function scoreCandidate(sound, target) {
   if (name.includes('loop') && (target.fileName.includes('loop') || isBackgroundMusic)) score += 20;
   if (name.includes('short')) score += 8;
   if (isBackgroundMusic) {
-    if (name.includes('ambient') || name.includes('music') || name.includes('pad')) score += 30;
+    if (name.includes('upbeat') || name.includes('arcade') || name.includes('game')) score += 45;
+    if (name.includes('beat') || name.includes('rhythm') || name.includes('dance')) score += 22;
+    if (name.includes('music') || name.includes('loop')) score += 15;
+    if (name.includes('calm') || name.includes('soft') || name.includes('sleep') || name.includes('pad')) score -= 60;
     if (duration < 5) score -= 80;
   } else if (name.includes('ambient') || name.includes('music')) {
     score -= 90;
