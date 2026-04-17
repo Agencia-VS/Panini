@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "audio:freesound": "node --env-file-if-exists=.env.local scripts/fetch-freesound-cc0.mjs",
+    "audio:freesound:dry": "node --env-file-if-exists=.env.local scripts/fetch-freesound-cc0.mjs --dry-run"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

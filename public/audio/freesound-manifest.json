@@ -1,0 +1,173 @@
+{
+  "generatedAt": "2026-04-17T15:42:11.899Z",
+  "dryRun": false,
+  "source": "freesound.org",
+  "licenseFilter": "Creative Commons 0",
+  "items": [
+    {
+      "fileName": "background-ambient.mp3",
+      "query": "calm ambient music loop",
+      "score": 150,
+      "triedQueries": [
+        "soft ambient background loop",
+        "calm ambient music loop",
+        "game background ambient",
+        "gentle pad loop"
+      ],
+      "status": "downloaded",
+      "source": {
+        "id": 826622,
+        "name": "Memories of a sweet summer (music) (loop)",
+        "username": "xkeril",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "soundPage": "https://freesound.org/people/xkeril/sounds/826622/",
+        "previewUrl": "https://cdn.freesound.org/previews/826/826622_13504080-hq.mp3",
+        "duration": 20
+      }
+    },
+    {
+      "fileName": "spin-loop.mp3",
+      "query": "roulette wheel spin loop",
+      "score": 120,
+      "triedQueries": [
+        "roulette wheel spin loop",
+        "wheel spin loop",
+        "spin whoosh loop",
+        "slot machine spin"
+      ],
+      "status": "downloaded",
+      "source": {
+        "id": 482663,
+        "name": "Roulette Wheel Spin Loop 1_1",
+        "username": "Joao_Janz",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "soundPage": "https://freesound.org/people/Joao_Janz/sounds/482663/",
+        "previewUrl": "https://cdn.freesound.org/previews/482/482663_9961300-hq.mp3",
+        "duration": 2.4
+      }
+    },
+    {
+      "fileName": "reveal-hit.mp3",
+      "query": "impact hit reveal whoosh",
+      "score": 100,
+      "triedQueries": [
+        "impact hit reveal whoosh",
+        "cinematic impact hit short",
+        "ui reveal hit"
+      ],
+      "status": "downloaded",
+      "source": {
+        "id": 645511,
+        "name": "Riser Hit sfx 032.wav",
+        "username": "AudioPapkin",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "soundPage": "https://freesound.org/people/AudioPapkin/sounds/645511/",
+        "previewUrl": "https://cdn.freesound.org/previews/645/645511_8698658-hq.mp3",
+        "duration": 2.9685
+      }
+    },
+    {
+      "fileName": "sticker-slap.mp3",
+      "query": "ui pop click",
+      "score": 100,
+      "triedQueries": [
+        "card slap paper sticker",
+        "paper slap short",
+        "card hit short",
+        "ui pop click"
+      ],
+      "status": "downloaded",
+      "source": {
+        "id": 333429,
+        "name": "UI Series: Another basic click",
+        "username": "brandondelehoy",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "soundPage": "https://freesound.org/people/brandondelehoy/sounds/333429/",
+        "previewUrl": "https://cdn.freesound.org/previews/333/333429_4682121-hq.mp3",
+        "duration": 0.505215
+      }
+    },
+    {
+      "fileName": "special-fanfare.mp3",
+      "query": "victory fanfare short",
+      "score": 108,
+      "triedQueries": [
+        "trumpet fanfare success short",
+        "victory fanfare short",
+        "win brass stinger"
+      ],
+      "status": "downloaded",
+      "source": {
+        "id": 677858,
+        "name": "Game Success Fanfare Short",
+        "username": "el_boss",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "soundPage": "https://freesound.org/people/el_boss/sounds/677858/",
+        "previewUrl": "https://cdn.freesound.org/previews/677/677858_9129912-hq.mp3",
+        "duration": 3.38108
+      }
+    },
+    {
+      "fileName": "bingo-win.mp3",
+      "query": "game win success",
+      "score": 108,
+      "triedQueries": [
+        "crowd cheer win stinger",
+        "victory crowd cheer",
+        "game win success",
+        "winner fanfare"
+      ],
+      "status": "downloaded",
+      "source": {
+        "id": 677858,
+        "name": "Game Success Fanfare Short",
+        "username": "el_boss",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "soundPage": "https://freesound.org/people/el_boss/sounds/677858/",
+        "previewUrl": "https://cdn.freesound.org/previews/677/677858_9129912-hq.mp3",
+        "duration": 3.38108
+      }
+    },
+    {
+      "fileName": "countdown-tick.mp3",
+      "query": "metronome click short",
+      "score": 100,
+      "triedQueries": [
+        "countdown tick",
+        "clock tick digital click",
+        "metronome click short",
+        "ui tick click"
+      ],
+      "status": "downloaded",
+      "source": {
+        "id": 793345,
+        "name": "Metronome click 2",
+        "username": "Sadiquecat",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "soundPage": "https://freesound.org/people/Sadiquecat/sounds/793345/",
+        "previewUrl": "https://cdn.freesound.org/previews/793/793345_5287430-hq.mp3",
+        "duration": 0.619437
+      }
+    },
+    {
+      "fileName": "undo-whoosh.mp3",
+      "query": "reverse whoosh short",
+      "score": 108,
+      "triedQueries": [
+        "reverse whoosh short",
+        "reverse swoosh short",
+        "rewind whoosh"
+      ],
+      "status": "downloaded",
+      "source": {
+        "id": 402818,
+        "name": "White Noise Short Reverse Whoosh.wav",
+        "username": "HowardV",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "soundPage": "https://freesound.org/people/HowardV/sounds/402818/",
+        "previewUrl": "https://cdn.freesound.org/previews/402/402818_1654262-hq.mp3",
+        "duration": 3.12034
+      }
+    }
+  ]
+}

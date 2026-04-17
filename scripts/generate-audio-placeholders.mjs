@@ -7,6 +7,7 @@ import { writeFileSync } from 'fs';
 import { join } from 'path';
 
 const audioFiles = [
+  'background-ambient.mp3',
   'spin-loop.mp3',
   'reveal-hit.mp3',
   'sticker-slap.mp3',
