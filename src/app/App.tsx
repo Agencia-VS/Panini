@@ -203,7 +203,6 @@ export default function App() {
           BINGO MUNDIALERO — PANINI
           {isRehearsal && <span className="app__rehearsal-badge"> 🧪 ENSAYO</span>}
         </h1>
-        <PatternPreview pattern={state.pattern} />
         {role === 'host' && (
           <button
             className="app__bingo-btn"
@@ -233,7 +232,13 @@ export default function App() {
           disabled={role === 'viewer' || !canSpin || flagsRemaining === 0}
           remaining={flagsRemaining}
         />
-        <RecentFlags history={state.history} />
+        <aside className="app__right-panel">
+          <section className="app__pattern-panel">
+            <div className="app__pattern-title">Patrón a completar</div>
+            <PatternPreview pattern={state.pattern} variant="expanded" />
+          </section>
+          <RecentFlags history={state.history} maxVisible={4} />
+        </aside>
       </main>
 
       {role === 'host' && (

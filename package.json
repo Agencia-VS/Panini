@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
+    "flags:download": "node scripts/fetch-flags-flagcdn.mjs",
     "audio:freesound": "node --env-file-if-exists=.env.local scripts/fetch-freesound-cc0.mjs",
     "audio:freesound:dry": "node --env-file-if-exists=.env.local scripts/fetch-freesound-cc0.mjs --dry-run"
   },

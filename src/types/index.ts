@@ -70,6 +70,6 @@ export type GameAction =
 
 export const SCHEMA_VERSION = 1;
 export const STORAGE_KEY = 'panini-bingo-state';
-export const TOTAL_FLAGS = 48;
-export const GRID_COLS = 8;
-export const GRID_ROWS = 6;
+export const TOTAL_FLAGS = 16;
+export const GRID_COLS = 4;
+export const GRID_ROWS = 4;

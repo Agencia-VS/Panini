@@ -3,8 +3,6 @@
    Design System: "The Tactile Archive"
    ══════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
-
 :root {
   /* ── Primary: Panini Red ── */
   --primary: #bb000c;

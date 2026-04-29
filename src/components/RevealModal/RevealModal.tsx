@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { DrawnFlag } from '../../types';
+import { TOTAL_FLAGS } from '../../types';
 import './RevealModal.css';
 
 interface Props {
@@ -47,7 +48,7 @@ export default function RevealModal({ flag, isOpen, onClose, totalDrawn }: Props
               alt={flag.name}
             />
             <div className="reveal-card__name">{flag.name}</div>
-            <div className="reveal-card__number">#{totalDrawn} de 48</div>
+            <div className="reveal-card__number">#{totalDrawn} de {TOTAL_FLAGS}</div>
             <button className="reveal-card__close" onClick={onClose}>
               Continuar
             </button>

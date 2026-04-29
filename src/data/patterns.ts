@@ -4,24 +4,16 @@ import { TOTAL_FLAGS, GRID_COLS, GRID_ROWS } from '../types';
 /**
  * Definición de patrones de victoria.
  *
- * Cada patrón define conjuntos de IDs de posición (índice 0-47 en el grid de 8×6).
+ * Cada patrón define conjuntos de IDs de posición (índice 0..TOTAL_FLAGS-1).
  * Si TODOS los IDs de al menos un conjunto están en el historial → patrón cumplido.
- *
- * Grid visual (índices):
- *  0  1  2  3  4  5  6  7
- *  8  9 10 11 12 13 14 15
- * 16 17 18 19 20 21 22 23
- * 24 25 26 27 28 29 30 31
- * 32 33 34 35 36 37 38 39
- * 40 41 42 43 44 45 46 47
  */
 
-// Filas (6 líneas horizontales)
+// Filas
 const ROWS: number[][] = Array.from({ length: GRID_ROWS }, (_, row) =>
   Array.from({ length: GRID_COLS }, (_, col) => row * GRID_COLS + col),
 );
 
-// Columnas (8 líneas verticales)
+// Columnas
 const COLS: number[][] = Array.from({ length: GRID_COLS }, (_, col) =>
   Array.from({ length: GRID_ROWS }, (_, row) => row * GRID_COLS + col),
 );
@@ -39,7 +31,7 @@ const CUADRO: number[][] = [
   ],
 ];
 
-// Bingo full: las 48 posiciones
+// Bingo full: todas las posiciones
 const FULL: number[][] = [Array.from({ length: TOTAL_FLAGS }, (_, i) => i)];
 
 // L: 4 orientaciones (esquinas)

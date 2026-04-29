@@ -14,9 +14,10 @@ const PATTERN_NAMES: Record<PatternType, string> = {
 
 interface Props {
   pattern: PatternType;
+  variant?: 'compact' | 'expanded';
 }
 
-export default function PatternPreview({ pattern }: Props) {
+export default function PatternPreview({ pattern, variant = 'compact' }: Props) {
   // Tomar el primer conjunto del patrón como ejemplo visual
   const activeCells = useMemo(() => {
     const sets = patterns[pattern];
@@ -26,13 +27,14 @@ export default function PatternPreview({ pattern }: Props) {
   const totalCells = GRID_ROWS * GRID_COLS;
 
   return (
-    <div className="pattern-preview">
+    <div className={`pattern-preview pattern-preview--${variant}`}>
       <div className="pattern-preview__label">{PATTERN_NAMES[pattern]}</div>
       <div
         className="pattern-preview__grid"
         style={{
           gridTemplateColumns: `repeat(${GRID_COLS}, 1fr)`,
           gridTemplateRows: `repeat(${GRID_ROWS}, 1fr)`,
+          aspectRatio: `${GRID_COLS} / ${GRID_ROWS}`,
         }}
       >
         {Array.from({ length: totalCells }, (_, i) => (

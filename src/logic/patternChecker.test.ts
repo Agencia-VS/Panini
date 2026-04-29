@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import type { DrawnFlag } from '../types';
 import { allFlags } from '../data/flags';
 import { checkPattern } from './patternChecker';
+import { GRID_COLS, GRID_ROWS, TOTAL_FLAGS } from '../types';
 
 /** Helper: crea DrawnFlags a partir de índices del array maestro */
 function drawByIndices(indices: number[]): DrawnFlag[] {
@@ -12,94 +13,97 @@ function drawByIndices(indices: number[]): DrawnFlag[] {
   }));
 }
 
+const firstRow = Array.from({ length: GRID_COLS }, (_, i) => i);
+const lastRowStart = (GRID_ROWS - 1) * GRID_COLS;
+const lastRow = Array.from({ length: GRID_COLS }, (_, i) => lastRowStart + i);
+const firstCol = Array.from({ length: GRID_ROWS }, (_, row) => row * GRID_COLS);
+const lastColIndex = GRID_COLS - 1;
+const lastCol = Array.from({ length: GRID_ROWS }, (_, row) => row * GRID_COLS + lastColIndex);
+
+const cuadroIndices = [
+  ...firstRow,
+  ...lastRow,
+  ...Array.from({ length: Math.max(0, GRID_ROWS - 2) }, (_, i) => (i + 1) * GRID_COLS),
+  ...Array.from({ length: Math.max(0, GRID_ROWS - 2) }, (_, i) => (i + 1) * GRID_COLS + lastColIndex),
+];
+
 describe('patternChecker', () => {
   describe('linea (fila completa)', () => {
-    it('detecta la primera fila completa (índices 0-7)', () => {
-      const history = drawByIndices([0, 1, 2, 3, 4, 5, 6, 7]);
+    it('detecta la primera fila completa', () => {
+      const history = drawByIndices(firstRow);
       expect(checkPattern(history, 'linea')).toBe(true);
     });
 
-    it('detecta la quinta fila completa (índices 32-39)', () => {
-      const history = drawByIndices([32, 33, 34, 35, 36, 37, 38, 39]);
+    it('detecta la última fila completa', () => {
+      const history = drawByIndices(lastRow);
       expect(checkPattern(history, 'linea')).toBe(true);
     });
 
     it('no detecta fila incompleta', () => {
-      const history = drawByIndices([0, 1, 2, 3, 4, 5, 6]); // Falta el 7
+      const history = drawByIndices(firstRow.slice(0, -1));
       expect(checkPattern(history, 'linea')).toBe(false);
     });
   });
 
   describe('columna', () => {
-    it('detecta primera columna completa (0, 8, 16, 24, 32, 40)', () => {
-      const history = drawByIndices([0, 8, 16, 24, 32, 40]);
+    it('detecta primera columna completa', () => {
+      const history = drawByIndices(firstCol);
       expect(checkPattern(history, 'columna')).toBe(true);
     });
 
     it('no detecta columna incompleta', () => {
-      const history = drawByIndices([0, 8, 16, 24, 32]); // Falta el 40
+      const history = drawByIndices(firstCol.slice(0, -1));
       expect(checkPattern(history, 'columna')).toBe(false);
     });
   });
 
   describe('cuadro (bordes)', () => {
     it('detecta cuadro completo', () => {
-      // Fila 0 + Fila 5 + interiores col 0 y col 7 (filas 1-4)
-      const indices = [
-        0, 1, 2, 3, 4, 5, 6, 7,         // Fila 0
-        40, 41, 42, 43, 44, 45, 46, 47,  // Fila 5
-        8, 16, 24, 32,                    // Col 0 interior
-        15, 23, 31, 39,                   // Col 7 interior
-      ];
-      const history = drawByIndices(indices);
+      const history = drawByIndices(cuadroIndices);
       expect(checkPattern(history, 'cuadro')).toBe(true);
     });
 
     it('no detecta cuadro incompleto', () => {
-      const indices = [0, 1, 2, 3, 4, 5, 6, 7, 40, 41]; // Muy incompleto
-      const history = drawByIndices(indices);
+      const history = drawByIndices(cuadroIndices.slice(0, Math.max(1, cuadroIndices.length - 2)));
       expect(checkPattern(history, 'cuadro')).toBe(false);
     });
   });
 
   describe('bingo_full', () => {
-    it('detecta las 48 banderas', () => {
-      const history = drawByIndices(Array.from({ length: 48 }, (_, i) => i));
+    it('detecta todas las banderas', () => {
+      const history = drawByIndices(Array.from({ length: TOTAL_FLAGS }, (_, i) => i));
       expect(checkPattern(history, 'bingo_full')).toBe(true);
     });
 
-    it('no detecta con 47 banderas', () => {
-      const history = drawByIndices(Array.from({ length: 47 }, (_, i) => i));
+    it('no detecta con una bandera faltante', () => {
+      const history = drawByIndices(Array.from({ length: TOTAL_FLAGS - 1 }, (_, i) => i));
       expect(checkPattern(history, 'bingo_full')).toBe(false);
     });
   });
 
   describe('con banderas extras (no afectan)', () => {
     it('detecta patrón aunque haya banderas adicionales', () => {
-      // Primera fila + algunas extras
-      const history = drawByIndices([0, 1, 2, 3, 4, 5, 6, 7, 10, 20, 30]);
+      const extras = Array.from({ length: Math.min(2, TOTAL_FLAGS - firstRow.length) }, (_, i) => firstRow.length + i);
+      const history = drawByIndices([...firstRow, ...extras]);
       expect(checkPattern(history, 'linea')).toBe(true);
     });
   });
 
   describe('ele (L)', () => {
     it('detecta L inferior-izquierda: col 0 + última fila', () => {
-      // Col 0: 0,8,16,24,32,40 + Última fila: 40,41,42,43,44,45,46,47
-      const indices = [...new Set([0, 8, 16, 24, 32, 40, 41, 42, 43, 44, 45, 46, 47])];
+      const indices = [...new Set([...firstCol, ...lastRow])];
       const history = drawByIndices(indices);
       expect(checkPattern(history, 'ele')).toBe(true);
     });
 
     it('detecta L superior-derecha: última col + fila 0', () => {
-      // Última col: 7,15,23,31,39,47 + Fila 0: 0,1,2,3,4,5,6,7
-      const indices = [...new Set([7, 15, 23, 31, 39, 47, 0, 1, 2, 3, 4, 5, 6])];
+      const indices = [...new Set([...lastCol, ...firstRow])];
       const history = drawByIndices(indices);
       expect(checkPattern(history, 'ele')).toBe(true);
     });
 
     it('no detecta L incompleta', () => {
-      // Solo col 0 sin la fila
-      const history = drawByIndices([0, 8, 16, 24, 32, 40]);
+      const history = drawByIndices(firstCol);
       expect(checkPattern(history, 'ele')).toBe(false);
     });
   });
