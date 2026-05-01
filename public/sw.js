@@ -70,7 +70,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  const staticDestinations = new Set(['script', 'style', 'image', 'font', 'audio']);
+  const staticDestinations = new Set(['script', 'style', 'image', 'font', 'audio', 'video']);
   const isStaticAsset = staticDestinations.has(request.destination);
 
   if (!isStaticAsset) return;

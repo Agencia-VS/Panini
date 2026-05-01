@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import './Countdown.css';
 
@@ -12,12 +12,12 @@ interface Props {
 export default function Countdown({ active, from = 3, onComplete, playTick }: Props) {
   const [count, setCount] = useState(from);
 
-  const reset = useCallback(() => setCount(from), [from]);
-
   useEffect(() => {
     if (!active) {
-      reset();
-      return;
+      const resetTimer = setTimeout(() => {
+        setCount(from);
+      }, 0);
+      return () => clearTimeout(resetTimer);
     }
 
     playTick?.();
@@ -33,7 +33,7 @@ export default function Countdown({ active, from = 3, onComplete, playTick }: Pr
     }, 800);
 
     return () => clearTimeout(timer);
-  }, [active, count, onComplete, playTick, reset]);
+  }, [active, count, onComplete, playTick, from]);
 
   return (
     <AnimatePresence>

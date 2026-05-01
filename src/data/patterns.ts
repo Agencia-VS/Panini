@@ -1,10 +1,10 @@
 import type { PatternType } from '../types';
-import { TOTAL_FLAGS, GRID_COLS, GRID_ROWS } from '../types';
+import { CARTON_FLAGS, GRID_COLS, GRID_ROWS } from '../types';
 
 /**
  * Definición de patrones de victoria.
  *
- * Cada patrón define conjuntos de IDs de posición (índice 0..TOTAL_FLAGS-1).
+ * Cada patrón define conjuntos de IDs de posición (índice 0..CARTON_FLAGS-1).
  * Si TODOS los IDs de al menos un conjunto están en el historial → patrón cumplido.
  */
 
@@ -32,7 +32,7 @@ const CUADRO: number[][] = [
 ];
 
 // Bingo full: todas las posiciones
-const FULL: number[][] = [Array.from({ length: TOTAL_FLAGS }, (_, i) => i)];
+const FULL: number[][] = [Array.from({ length: CARTON_FLAGS }, (_, i) => i)];
 
 // L: 4 orientaciones (esquinas)
 // L normal: col 0 completa + última fila (esquina inferior izquierda)

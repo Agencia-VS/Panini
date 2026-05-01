@@ -9,6 +9,9 @@ interface SpinOptions {
 /**
  * Orquesta la animación GSAP del bolillero.
  * Usa ref externo para no competir con React por el DOM.
+ *
+ * Con MP4 animado, evitamos rotar el DOM para no duplicar movimiento.
+ * GSAP se usa aquí únicamente como temporizador cancelable.
  */
 export function useSpinAnimation() {
   const spinnerRef = useRef<HTMLDivElement>(null);
@@ -21,7 +24,7 @@ export function useSpinAnimation() {
     // Matar animación previa si existe
     timelineRef.current?.kill();
 
-    const baseDuration = duration + (Math.random() - 0.5);
+    const baseDuration = duration;
 
     const tl = gsap.timeline({
       onComplete: () => {
@@ -30,28 +33,7 @@ export function useSpinAnimation() {
       },
     });
 
-    tl.to(el, {
-      rotation: '+=1080',
-      duration: baseDuration * 0.6,
-      ease: 'power2.in',
-    })
-      .to(el, {
-        rotation: '+=540',
-        duration: baseDuration * 0.3,
-        ease: 'power3.out',
-      })
-      .to(el, {
-        rotation: '+=90',
-        duration: baseDuration * 0.1,
-        ease: 'power4.out',
-      })
-      .to(el, {
-        scale: 1.08,
-        duration: 0.15,
-        yoyo: true,
-        repeat: 1,
-        ease: 'back.out(2)',
-      });
+    tl.to({}, { duration: baseDuration, ease: 'none' });
 
     timelineRef.current = tl;
   }, []);

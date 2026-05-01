@@ -24,7 +24,10 @@ type SoundName = keyof typeof SOUNDS;
 export function useAudio(enabled = true) {
   const howlsRef = useRef<Map<SoundName, Howl>>(new Map());
   const enabledRef = useRef(enabled);
-  enabledRef.current = enabled;
+
+  useEffect(() => {
+    enabledRef.current = enabled;
+  }, [enabled]);
 
   const ensureBackgroundMusic = useCallback(() => {
     if (!enabledRef.current) return;
@@ -51,9 +54,7 @@ export function useAudio(enabled = true) {
 
     for (const [name, config] of Object.entries(SOUNDS)) {
       if (!map.has(name as SoundName)) {
-        let howl: Howl;
-
-        howl = new Howl({
+        const howl = new Howl({
           src: [config.src],
           loop: 'loop' in config ? config.loop : false,
           volume: config.volume,

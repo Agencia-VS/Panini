@@ -83,16 +83,6 @@ export default function App() {
   }, [preload.isReady, phase, goIdle]);
 
   // ── Flujo de giro ──
-  const handleSpin = useCallback(() => {
-    if (!canSpin || flagsRemaining === 0) return;
-
-    if (countdownEnabled) {
-      setCountdownActive(true);
-    } else {
-      executeSpin();
-    }
-  }, [canSpin, flagsRemaining, countdownEnabled]);
-
   const executeSpin = useCallback(() => {
     startSpin();
     play('spin');
@@ -108,6 +98,16 @@ export default function App() {
       },
     });
   }, [startSpin, play, spin, stop, drawFlag, reveal]);
+
+  const handleSpin = useCallback(() => {
+    if (!canSpin || flagsRemaining === 0) return;
+
+    if (countdownEnabled) {
+      setCountdownActive(true);
+    } else {
+      executeSpin();
+    }
+  }, [canSpin, flagsRemaining, countdownEnabled, executeSpin]);
 
   const handleCountdownComplete = useCallback(() => {
     setCountdownActive(false);
@@ -137,17 +137,48 @@ export default function App() {
   const handleBingo = useCallback(() => {
     celebrate();
     play('win');
-    const end = Date.now() + 3000;
-    const frame = () => {
+    const durationMs = 2800;
+    const intervalMs = 140;
+    const end = Date.now() + durationMs;
+
+    // Pulso inicial para arranque inmediato.
+    confetti({
+      particleCount: 45,
+      spread: 90,
+      startVelocity: 42,
+      origin: { x: 0.5, y: 0.42 },
+      colors: ['#f5c518', '#ff6b35', '#ffffff', '#e879f9'],
+    });
+
+    const timerId = window.setInterval(() => {
+      const timeLeft = end - Date.now();
+      if (timeLeft <= 0) {
+        window.clearInterval(timerId);
+        return;
+      }
+
+      const intensity = Math.max(0.25, timeLeft / durationMs);
+      const particleCount = Math.round(18 * intensity);
+
       confetti({
-        particleCount: 60,
-        spread: 100,
-        origin: { x: Math.random(), y: Math.random() * 0.4 },
+        particleCount,
+        angle: 60,
+        spread: 70,
+        startVelocity: 38,
+        origin: { x: 0.08, y: 0.62 },
         colors: ['#f5c518', '#ff6b35', '#ffffff', '#e879f9'],
       });
-      if (Date.now() < end) requestAnimationFrame(frame);
-    };
-    frame();
+
+      confetti({
+        particleCount,
+        angle: 120,
+        spread: 70,
+        startVelocity: 38,
+        origin: { x: 0.92, y: 0.62 },
+        colors: ['#f5c518', '#ff6b35', '#ffffff', '#e879f9'],
+      });
+    }, intervalMs);
+
     setTimeout(() => {
       goIdle();
     }, 4000);
@@ -199,30 +230,54 @@ export default function App() {
   return (
     <div className={`app ${role === 'viewer' ? 'app--viewer' : ''}`}>
       <header className="app__header">
-        <h1 className="app__title">
-          BINGO MUNDIALERO — PANINI
-          {isRehearsal && <span className="app__rehearsal-badge"> 🧪 ENSAYO</span>}
-        </h1>
-        {role === 'host' && (
-          <button
-            className="app__bingo-btn"
-            onClick={handleBingo}
-            disabled={phase === 'spinning' || phase === 'celebrating'}
-          >
-            🏆 ¡BINGO!
-          </button>
-        )}
-        <span className="app__status">
-          {flagsRemaining} restantes · {state.history.length} sorteadas
-        </span>
-        {state.history.length > 0 && (
-          <button
-            className="app__recap-btn"
-            onClick={() => setRecapOpen(true)}
-          >
-            📋 Recuento
-          </button>
-        )}
+        <div className="app__logo">
+          <img
+            className="app__logo-img"
+            src={`${import.meta.env.BASE_URL}panini-logo.webp`}
+            alt="Panini"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).style.display = 'none';
+            }}
+          />
+        </div>
+
+        <div className="app__header-center">
+          <h1 className="app__title">
+            BINGO<br />MUNDIALERO
+            {isRehearsal && <span className="app__rehearsal-badge"> 🧪 ENSAYO</span>}
+          </h1>
+          {role === 'host' ? (
+            <button
+              className="app__bingo-btn"
+              onClick={handleBingo}
+              disabled={phase === 'spinning' || phase === 'celebrating'}
+            >
+              ¡BINGO!
+            </button>
+          ) : <span className="app__header-placeholder app__header-placeholder--bingo" aria-hidden />}
+          <span className="app__status">
+            {flagsRemaining} restantes · {state.history.length} sorteadas
+          </span>
+          {state.history.length > 0 ? (
+            <button
+              className="app__recap-btn"
+              onClick={() => setRecapOpen(true)}
+            >
+              RECUENTO
+            </button>
+          ) : <span className="app__header-placeholder app__header-placeholder--recap" aria-hidden />}
+        </div>
+
+        <div className="app__wc26" aria-hidden>
+          <img
+            className="app__wc26-img"
+            src={`${import.meta.env.BASE_URL}logo26.png`}
+            alt=""
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).style.display = 'none';
+            }}
+          />
+        </div>
       </header>
 
       <main className="app__main">
@@ -231,10 +286,17 @@ export default function App() {
           onSpin={handleSpin}
           disabled={role === 'viewer' || !canSpin || flagsRemaining === 0}
           remaining={flagsRemaining}
+          isSpinning={phase === 'spinning'}
         />
         <aside className="app__right-panel">
           <section className="app__pattern-panel">
-            <div className="app__pattern-title">Patrón a completar</div>
+            <div className="app__pattern-title" aria-label="¡TODO EMPIEZA CON PANINI!">
+              <span className="app__pattern-word app__pattern-word--sky">¡TODO</span>{' '}
+              <span className="app__pattern-word app__pattern-word--blue">EMPIEZA</span>
+              <br />
+              <span className="app__pattern-word app__pattern-word--green">CON</span>{' '}
+              <span className="app__pattern-word app__pattern-word--red">PANINI!</span>
+            </div>
             <PatternPreview pattern={state.pattern} variant="expanded" />
           </section>
           <RecentFlags history={state.history} maxVisible={4} />

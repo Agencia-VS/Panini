@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useCallback, useRef } from 'react';
+import { useReducer, useEffect, useCallback, useMemo, useRef } from 'react';
 import type { GameState, PatternType, Winner, DrawnFlag } from '../types';
 import { SCHEMA_VERSION, STORAGE_KEY } from '../types';
 import { bingoReducer, initialGameState } from '../logic/bingoReducer';
@@ -84,7 +84,7 @@ export function useBingo() {
 
   const lastDrawn: DrawnFlag | null = state.current;
 
-  const historyIds = new Set(state.history.map((f) => f.id));
+  const historyIds = useMemo(() => new Set(state.history.map((f) => f.id)), [state.history]);
 
   const isFlagDrawn = useCallback(
     (flagId: string) => historyIds.has(flagId),

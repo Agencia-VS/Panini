@@ -1,38 +1,67 @@
 /* ══════════════════════════════════════════════════
-   PANINI BINGO MUNDIALERO — The Analog Collector
-   Design System: "The Tactile Archive"
+   PANINI BINGO MUNDIALERO — Línea gráfica oficial
+   Tokens basados en arte FIFA / Panini WEB BINGO.ai
    ══════════════════════════════════════════════════ */
 
+@font-face {
+  font-family: 'FWC26';
+  src: url('../assets/fonts/FWC26-CondensedBlack.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FIFASans';
+  src: url('../assets/fonts/FIFASans-Regular.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  /* ── Primary: Panini Red ── */
-  --primary: #bb000c;
-  --primary-light: #e8333d;
+  /* ── Brand colors ── */
+  --primary: #ed1c24;            /* Rojo Panini (R=237 G=28 B=36) */
+  --primary-strong: #c1272d;     /* Rojo profundo (R=193 G=39 B=45) */
+  --primary-light: #f15a24;
   --on-primary: #ffffff;
 
-  /* ── Secondary: Deep Orange / vintage ── */
+  /* ── Azul Panini panel/banderas ── */
+  --panini-blue: #1b1464;        /* (R=27 G=20 B=100) */
+  --panini-blue-strong: #2e3192; /* (R=46 G=49 B=146) */
+  --panini-blue-light: #2f3aa3;
+  --on-panini-blue: #ffffff;
+
+  /* ── Acento amarillo / verde / cian ── */
+  --accent-yellow: #fcee21;      /* (R=252 G=238 B=33) */
+  --accent-green: #39b54a;       /* (R=57 G=181 B=74) */
+  --accent-cyan: #29abe2;        /* (R=41 G=171 B=226) */
+  --accent-magenta: #ed1e79;     /* (R=237 G=30 B=121) */
+
+  /* ── Secondary (vintage warm para fallback) ── */
   --secondary: #8c4a00;
   --secondary-container: #ffb366;
   --on-secondary: #ffffff;
 
-  /* ── Tertiary: Vibrant Yellow / gold ── */
+  /* ── Tertiary: gold ── */
   --tertiary: #6c5a00;
   --tertiary-container: #ffd709;
 
-  /* ── Surface Hierarchy (warm album pages) ── */
-  --surface: #fff4f4;
-  --surface-dim: #f0e6e7;
+  /* ── Surface Hierarchy: blanco-crema (la línea gráfica nueva es blanca) ── */
+  --surface: #ffffff;
+  --surface-dim: #f4f4f4;
   --surface-bright: #ffffff;
   --surface-container-lowest: #ffffff;
-  --surface-container-low: #ffeced;
-  --surface-container: #ffe0e2;
-  --surface-container-high: #ffd9dc;
-  --surface-container-highest: #ffd0d4;
+  --surface-container-low: #fafafa;
+  --surface-container: #f3f3f3;
+  --surface-container-high: #ececec;
+  --surface-container-highest: #e4e4e4;
 
   /* ── Text on surfaces ── */
-  --on-surface: #4d2127;
-  --on-surface-variant: #6d4249;
-  --text-muted: #99757b;
-  --outline-variant: rgba(77, 33, 39, 0.15);
+  --on-surface: #1b1b1b;
+  --on-surface-variant: #4d4d4d;
+  --text-muted: #808080;
+  --outline-variant: rgba(0, 0, 0, 0.12);
 
   /* ── Semantic mappings (consumed by components) ── */
   --bg-primary: var(--surface);
@@ -49,11 +78,11 @@
   --sticker-border-unlocked: var(--primary);
   --sticker-locked-bg: var(--surface-container-low);
   --album-border: var(--primary);
-  --album-surface: var(--surface-container);
+  --album-surface: var(--panini-blue);
 
-  /* ── Fonts ── */
-  --font-display: 'Epilogue', system-ui, sans-serif;
-  --font-body: 'Be Vietnam Pro', system-ui, sans-serif;
+  /* ── Fonts (oficiales del paquete creative) ── */
+  --font-display: 'FWC26', 'Epilogue', 'Arial Narrow', system-ui, sans-serif;
+  --font-body: 'FIFASans', 'Be Vietnam Pro', system-ui, sans-serif;
 }
 
 [data-theme='estadio'] {

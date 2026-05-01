@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import type { DrawnFlag } from '../types';
 import { allFlags } from '../data/flags';
 import { checkPattern } from './patternChecker';
-import { GRID_COLS, GRID_ROWS, TOTAL_FLAGS } from '../types';
+import { CARTON_FLAGS, GRID_COLS, GRID_ROWS, TOTAL_FLAGS } from '../types';
 
 /** Helper: crea DrawnFlags a partir de índices del array maestro */
 function drawByIndices(indices: number[]): DrawnFlag[] {
@@ -71,19 +71,19 @@ describe('patternChecker', () => {
 
   describe('bingo_full', () => {
     it('detecta todas las banderas', () => {
-      const history = drawByIndices(Array.from({ length: TOTAL_FLAGS }, (_, i) => i));
+      const history = drawByIndices(Array.from({ length: CARTON_FLAGS }, (_, i) => i));
       expect(checkPattern(history, 'bingo_full')).toBe(true);
     });
 
     it('no detecta con una bandera faltante', () => {
-      const history = drawByIndices(Array.from({ length: TOTAL_FLAGS - 1 }, (_, i) => i));
+      const history = drawByIndices(Array.from({ length: CARTON_FLAGS - 1 }, (_, i) => i));
       expect(checkPattern(history, 'bingo_full')).toBe(false);
     });
   });
 
   describe('con banderas extras (no afectan)', () => {
     it('detecta patrón aunque haya banderas adicionales', () => {
-      const extras = Array.from({ length: Math.min(2, TOTAL_FLAGS - firstRow.length) }, (_, i) => firstRow.length + i);
+      const extras = Array.from({ length: Math.min(2, TOTAL_FLAGS - CARTON_FLAGS) }, (_, i) => CARTON_FLAGS + i);
       const history = drawByIndices([...firstRow, ...extras]);
       expect(checkPattern(history, 'linea')).toBe(true);
     });

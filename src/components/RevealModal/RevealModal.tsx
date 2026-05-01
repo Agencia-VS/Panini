@@ -46,6 +46,10 @@ export default function RevealModal({ flag, isOpen, onClose, totalDrawn }: Props
               className="reveal-card__img"
               src={flag.imageSrc}
               alt={flag.name}
+              loading="eager"
+              fetchPriority="high"
+              decoding="sync"
+              draggable={false}
             />
             <div className="reveal-card__name">{flag.name}</div>
             <div className="reveal-card__number">#{totalDrawn} de {TOTAL_FLAGS}</div>
