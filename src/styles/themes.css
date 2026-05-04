@@ -12,6 +12,14 @@
 }
 
 @font-face {
+  font-family: 'FWC26-SemiEx';
+  src: url('../assets/fonts/FWC26-SemiExpandedBlack.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'FIFASans';
   src: url('../assets/fonts/FIFASans-Regular.ttf') format('truetype');
   font-weight: 400 700;

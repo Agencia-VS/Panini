@@ -243,7 +243,7 @@ export default function App() {
 
         <div className="app__header-center">
           <h1 className="app__title">
-            BINGO<br />MUNDIALERO
+            BINGO MUNDIALERO
             {isRehearsal && <span className="app__rehearsal-badge"> 🧪 ENSAYO</span>}
           </h1>
           {role === 'host' ? (
